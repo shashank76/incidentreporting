@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  incident: one
+  location: MyString
+  date: 2018-11-11 09:20:42
+  reporter_name: MyString
+  reporter_email: MyString
+  reporter_phone: MyString
+  role: MyString
+
+two:
+  incident: two
+  location: MyString
+  date: 2018-11-11 09:20:42
+  reporter_name: MyString
+  reporter_email: MyString
+  reporter_phone: MyString
+  role: MyString

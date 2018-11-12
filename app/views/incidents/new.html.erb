@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-box-body">
+  <%= nested_form_for (@incident),html: {id: "contact"} do |f|%>
+    <h4><td><%= f.select :school_id, options_for_select_school %></td></h4>
+    <h4>Incident Reporting Page</h4>
+    <h4>Describe Issue/Incident</h4>
+    <fieldset>      
+      <%= f.text_area :details, tabindex: "5", placeholder: "Write something here..." %> 
+    </fieldset>
+    <h4>Incident Type</h4>
+    <fieldset>
+      <%= f.fields_for :involve_incident_types do |a| %>
+        <tr class="fields">
+          <td><%= a.select :incident_type_id, options_for_select_incident_types %></td>
+          <td><%= a.link_to_remove "Remove" %></td>
+        </tr>
+      <% end %>
+      <p><%= f.link_to_add "Add Incident Types", :involve_incident_types, class: "btn btn-primary" %></p>
+    </fieldset>
+     <%= f.fields_for :incident_detail do |a| %>
+    <h4>Location</h4>
+    <fieldset>   
+      <%= a.select :location,options_for_select_location, placeholder: "Location" %>
+    </fieldset>
+
+    <h4>Incident Date</h4>
+    <fieldset>   
+      <%= a.text_field :date, placeholder: "Incident Date",id: 'datetimepicker' %>
+    </fieldset>
+    
+    <h4>Reporter Details</h4>
+    <fieldset>   
+      <%= a.text_field :reporter_name, placeholder: "Name" %>
+    </fieldset>
+    <fieldset>   
+      <%= a.email_field :reporter_email, placeholder: "Email" %>
+    </fieldset>
+    <fieldset>   
+      <%= a.text_field :reporter_phone, placeholder: "Phone" %>
+    </fieldset>
+    <fieldset>   
+      <%= a.select :role,options_for_select_role, placeholder: "Role" %>
+    </fieldset>
+    <% end %>
+    <h4>Incident Images</h4>
+      <%= f.fields_for :images do |a| %>
+        <div class="fields">
+          <td><%= a.file_field :file %></td>
+          <td><%= a.link_to_remove "Remove" %></td>
+        </div>
+      <% end %>
+    <p><%= f.link_to_add "Add a Photo", :images, class: "btn btn-primary" %></p>
+
+    <h4>Involved People</h4>
+      <%= f.fields_for :involve_persons do |a| %>
+        <tr class="fields">
+          <td><%= a.text_field :name, placeholder: "Name" %></td></br>
+          <td><%= a.email_field :email, placeholder: "Email" %></td></br>
+          <td><%= a.text_field :phone, placeholder: "Phone" %></td>
+          <td><%= a.link_to_remove "Remove" %></td>
+        </tr>
+      <% end %>
+    <p><%= f.link_to_add "Add Involved People", :involve_persons, class: "btn btn-primary" %></p>
+
+    <h4>Incident Observer</h4>
+      <%= f.fields_for :observers do |a| %>
+        <tr class="fields">
+          <td><%= a.text_field :name, placeholder: "Name" %></td></br>
+          <td><%= a.email_field :email, placeholder: "Email" %></td></br>
+          <td><%= a.text_field :phone, placeholder: "Phone" %></td>
+          <td><%= a.link_to_remove "Remove" %></td>
+        </tr>
+      <% end %>
+    <p><%= f.link_to_add "Add Incident Obsever", :observers, class: "btn btn-primary" %></p>
+   
+    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+  <%end%>
+</div>
+
+ </div>
+</div>
+</body>
+</html>
+
